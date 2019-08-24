@@ -51,10 +51,10 @@ public class detaildelivery {
         PreparedStatement stm;
         sql="insert into detaildelivery values(?,?,?,?)";
         stm=con.prepareStatement(sql);
-        stm.setInt(1, 106);
-        stm.setInt(2, 2);
+        stm.setInt(1, 109);
+        stm.setInt(2, 12);
         stm.setInt(3, 11);
-        stm.setInt(4, 3);
+        stm.setInt(4, 10);
         int rs=stm.executeUpdate();
         System.out.println(rs);
         //                con.commit();
@@ -65,7 +65,7 @@ public class detaildelivery {
         PreparedStatement stm;
         sql="delete from detaildelivery where nodelivery=?";
         stm=con.prepareStatement(sql);
-        stm.setInt(1, 106);
+        stm.setInt(1, 103);
         int rs=stm.executeUpdate();
         System.out.println(rs);
         
@@ -94,7 +94,7 @@ public class detaildelivery {
         
         PreparedStatement stm = null;
         sql="select nodelivery,noorder,noitem from detaildelivery where quantitydelivery=?";
-        stm.setInt(1, 3);
+        stm.setInt(1, 7);
         stm=con.prepareStatement(sql);
         ResultSet rs=stm.executeQuery();
         System.out.println(rs);
