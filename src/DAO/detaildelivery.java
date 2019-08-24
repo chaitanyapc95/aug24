@@ -36,6 +36,9 @@ public class detaildelivery {
               
             getInsert(con, sql);
             getDelete(con, sql);
+            getUpdate(con,sql);
+            getList(con,sql);
+            getSingle(con,sql);
               
           } catch (SQLException ex) {
               Logger.getLogger(detaildelivery.class.getName()).log(Level.SEVERE, null, ex);
@@ -48,10 +51,10 @@ public class detaildelivery {
         PreparedStatement stm;
         sql="insert into detaildelivery values(?,?,?,?)";
         stm=con.prepareStatement(sql);
-        stm.setInt(1, 105);
-        stm.setInt(2, 1);
-        stm.setInt(3, 10);
-        stm.setInt(4, 2);
+        stm.setInt(1, 106);
+        stm.setInt(2, 2);
+        stm.setInt(3, 11);
+        stm.setInt(4, 3);
         int rs=stm.executeUpdate();
         System.out.println(rs);
         //                con.commit();
@@ -62,7 +65,7 @@ public class detaildelivery {
         PreparedStatement stm;
         sql="delete from detaildelivery where nodelivery=?";
         stm=con.prepareStatement(sql);
-        stm.setInt(1, 105);
+        stm.setInt(1, 106);
         int rs=stm.executeUpdate();
         System.out.println(rs);
         
@@ -91,7 +94,7 @@ public class detaildelivery {
         
         PreparedStatement stm = null;
         sql="select nodelivery,noorder,noitem from detaildelivery where quantitydelivery=?";
-        stm.setInt(1, 2);
+        stm.setInt(1, 3);
         stm=con.prepareStatement(sql);
         ResultSet rs=stm.executeQuery();
         System.out.println(rs);
