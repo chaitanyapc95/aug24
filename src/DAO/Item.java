@@ -32,17 +32,9 @@ public class Item {
             
             con = DriverManager.getConnection(
                     "jdbc:oracle:thin:@144.217.163.57:1521:XE", "sales", "anypw" );
-            sql = "insert into item values (?,?,?)";
-            stm = con.prepareStatement(sql);
-            stm.setString(1, "LL");
-            stm.setString(2, "CEO");
-            stm.setInt(3, 12);
-            
-            
-            int rs = stm.executeUpdate();
-            
-            
-                System.out.println(rs);
+            stm = insert(con);
+            stm = delete(con);
+            stm = update(con);
                 stm.close();
                 con.close();
             
@@ -51,6 +43,42 @@ public class Item {
         }
         
                 
+    }
+
+    private static PreparedStatement update(Connection con) throws SQLException {
+        String sql;
+        PreparedStatement stm;
+        sql = "update ITEM set STOCKQUANTITY =? where DESCRIPTION =?";
+        stm = con.prepareStatement(sql);
+        stm.setInt(1, 11);
+        stm.setString(2, "SAPIN");
+        int rs = stm.executeUpdate();
+        System.out.println(rs);
+        return stm;
+    }
+
+    private static PreparedStatement delete(Connection con) throws SQLException {
+        String sql;
+        PreparedStatement stm;
+        sql = "delete from ITEM where DESCRIPTION = ?";
+        stm = con.prepareStatement(sql);
+        stm.setString(1,"sapin");
+        int rs = stm.executeUpdate();
+        System.out.println(rs);
+        return stm;
+    }
+
+    private static PreparedStatement insert(Connection con) throws SQLException {
+        String sql;
+        PreparedStatement stm;
+        sql = "insert into ITEM values (?,?,?)";
+        stm = con.prepareStatement(sql);
+        stm.setString(1, "LL");
+        stm.setString(2, "CEO");
+        stm.setInt(3, 12);
+        int rs = stm.executeUpdate();
+        System.out.println(rs);
+        return stm;
     }
 }
     
