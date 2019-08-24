@@ -8,6 +8,7 @@ package DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +36,7 @@ public class Item {
             stm = insert(con);
             stm = delete(con);
             stm = update(con);
+            stm = list(con);
                 stm.close();
                 con.close();
             
@@ -43,6 +45,16 @@ public class Item {
         }
         
                 
+    }
+
+    private static PreparedStatement list(Connection con) throws SQLException {
+        String sql;
+        PreparedStatement stm;
+        sql = "select * from ITEMS";
+        stm = con.prepareStatement(sql);
+        ResultSet rs = stm.executeQuery();
+        System.out.println(rs);
+        return stm;
     }
 
     private static PreparedStatement update(Connection con) throws SQLException {
