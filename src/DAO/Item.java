@@ -37,6 +37,8 @@ public class Item {
             stm = delete(con);
             stm = update(con);
             stm = list(con);
+            stm = select(con);
+            
                 stm.close();
                 con.close();
             
@@ -45,6 +47,17 @@ public class Item {
         }
         
                 
+    }
+
+    private static PreparedStatement select(Connection con) throws SQLException {
+        String sql;
+        PreparedStatement stm;
+        sql = "select NOITEM from Items where STOCKQUANTITY = ?";
+        stm = con.prepareStatement(sql);
+        stm.setInt(1, 5);
+        ResultSet rs = stm.executeQuery();
+        System.out.println(rs);
+        return stm;
     }
 
     private static PreparedStatement list(Connection con) throws SQLException {
